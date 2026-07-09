@@ -1,64 +1,53 @@
-# Colson Fellows Singapore — Outreach Site  
+# Colson Fellows Singapore — Outreach Site
 
-Plain HTML/CSS/JS, six pages, no build step. Drag it into a GitHub repo and Pages serves it as-is.
+Plain HTML/CSS/JS, six pages, no build step. Built to be dragged straight into a GitHub repo and served by GitHub Pages.
 
 ## Deploy (5 minutes)
 
 1. Create a new **public** GitHub repository (e.g. `colsonfellows-sg`).
-2. Upload every file in this folder to the repo root, preserving the folder structure (`css/`, `js/`, `images/`, the `.html` files, and `.nojekyll`). Easiest path: `git clone` the empty repo locally, copy these files in, then `git add . && git commit -m "Launch site" && git push`.
+2. Upload every file in this folder to the repo root, preserving the folder structure (`css/`, `js/`, `images/`, plus the `.html` files and `.nojekyll`). Easiest path: `git clone` the empty repo locally, copy these files in, then `git add . && git commit -m "Launch site" && git push`.
 3. In the repo: **Settings → Pages → Source → Deploy from a branch → `main` / `root`**.
 4. GitHub gives you a live URL within a minute or two, typically `https://[username].github.io/colsonfellows-sg/`.
-5. Optional: **Settings → Pages → Custom domain** for your own domain — you'll need a `CNAME` record with your registrar pointing at `[username].github.io`.
+5. Optional: **Settings → Pages → Custom domain** if you want your own domain instead of the github.io one — you'll need a `CNAME` record with your registrar pointing at `[username].github.io`.
 
-The `.nojekyll` file stops GitHub running its default Jekyll build over the files, so what you uploaded is exactly what gets served.
+The `.nojekyll` file stops GitHub from running its default Jekyll build over the files — with it present, what you uploaded is exactly what gets served, no surprises.
 
-## Editing dates and pricing — for this year and every year after
+## Before this goes live — please read
 
-**Open `js/config.js`. That's the only file you should need to touch between cohorts.**
+Your own brief (Section 1) is explicit that nothing in it should reach public copy without the leadership team confirming it first, and it specifically flags cost, dates, and the extent of Singapore localisation as **not yet confirmed**. I've written the site to be honest about that rather than quietly filling the gaps myself, but three things still need your sign-off:
 
-It's a short list of values — cohort label, deadline, start date, commissioning date, tuition — in plain English, with comments explaining each one. Change a value, save the file, re-upload it (or push it), and every page on the site updates itself. You never need to open an `.html` file to change a date or a dollar figure.
+1. **Application deadline (31 July 2026).** This isn't in your brief — I found it on the *live* colsonfellows.org site while researching. It's stated there as the global deadline for the August 2026 cohort. I've built the entire site's urgency around it. **Confirm this is also the real deadline for the Singapore cohort specifically** before this goes live — if it's wrong, the whole site is wrong in a way that actively costs you applicants.
 
-Two things worth knowing about how it works:
+2. **Carol Loi is listed as the Singapore cohort's official director** on colsonfellows.org (`cloi@colsonfellows.org`, 2nd/4th Thursdays, 8–10pm SGT) — a real, public, well-established listing, not something I'm guessing at. I've used her contact details as the site's Singapore contact point because it's the only verified channel I have. **If you are Carol, or work with her, this is straightforward — just confirm the details still match.** If this website is a separate or unofficial effort, you need to coordinate with her before this goes live, since prospective applicants will otherwise be routed to a person who doesn't know this site exists.
 
-- **The deadline banner softens itself automatically once the date passes.** Before `applicationDeadlineISO`, the site shows deadline-driven copy ("priority deadline 31 July"). After it, the same spots automatically switch to open-ended copy ("applications are still open — reach out"), with no manual editing required. This is what lets the site stay live and accurate year-round instead of going stale the day after a deadline — it's also why nothing on the site says "3 weeks left" anymore: that framing ages badly by design, so it's gone.
-- **Next year, you're only changing six values** (`cohortLabel`, `applicationDeadline` + its ISO twin, `cohortStart`, `commissioning`, and pricing if it changes) — not touching layout, copy, or any HTML.
+3. **Tuition (USD 900 / ~SGD 1,160 + ~USD 200 books).** This is the *global* benchmark, corroborated independently across several other regional chapter sites — but your own brief says Singapore-specific pricing isn't confirmed. I've deliberately hedged the FAQ copy ("the global benchmark is... Singapore-specific pricing is confirmed when you apply") rather than state a firm SGD figure. Tighten that once you have a real number.
 
-If you ever want a page to *say* something date-related that isn't already wired up, tag it in the HTML with `data-field="cohortLabel"` (or whichever key) instead of typing the date directly, and it'll pull from config automatically. `js/main.js` has the (short, commented) logic that reads the config and does the swapping, if you're curious, but you shouldn't need to open it.
+A few smaller judgment calls I made, so you can overrule them if you'd rather:
 
-## What changed since the last round, and why
-
-- **Cost is now stated plainly** — USD 900 + ~USD 200 books, no hedging — with a value case attached (roughly USD 45/session, what that buys) rather than just a number.
-- **All the internal-brief hedging is gone.** "Internal analysis," "not peer-reviewed," "working hypothesis," the confirmed-vs-unconfirmed apparatus on the Why page — none of that belongs in front of an applicant, and it read as exactly what it was: your internal brief's caveats, copied into public copy by mistake on my part. The site now states the case the brief made as simply true, the way it should.
-- **"Why Now" is now "What's at Stake,"** and the whole page is rewritten to argue the *importance* of going deeper, not a countdown. The line about "the audience most likely to leave over an unfounded claim" — commentary about the *marketing strategy*, sitting inside the *marketing copy* — is gone; that distinction should never have blurred.
-- **Every "Tuesday" is now "Monday."** Sunday-to-Monday is the actual rhythm most people feel; Tuesday never made sense and was inherited unquestioned from the source brief's own phrasing.
-- **Every testimonial is attributed by first name only** (Cheow Lan, not Cheow Lan Ong; Weng Pheng kept whole, since that's one given name, not two).
-- **The identify-cards on the home page now lead with a general, observable pattern and use a testimonial as supporting evidence**, rather than resting the whole hook on eleven people's say-so. Testimonials are still doing real work — they're just proof of the pattern now, not the whole argument for it.
-- **Apply is now always visible** — outside the collapsible mobile menu, on every screen size — instead of hidden behind the hamburger icon.
-- **Contrast and type-weight pass:** darkened the faint grey used on labels (it was failing WCAG AA), moved every small label off plain gold onto gold-light on dark backgrounds, made the "Singapore format" box permanently light regardless of what section it sits in (so it can never end up low-contrast against navy again), and bumped weight/size on the small mono labels site-wide.
-- **Deadline copy now has graceful "after the deadline" language everywhere it appears**, not just on the FAQ — so a late applicant is invited in, not shut out.
-
-## Before this goes live
-
-Really one thing left: **confirm with Carol Loi that this site is coordinated with her**, since she's the cohort's official, publicly-listed director and the site now routes all Singapore-specific contact to her inbox. Everything else flagged in the previous round — cost, the deadline, the Fellows count — you've since confirmed directly.
+- **Fellow count:** I used "6,000+" (a February 2026 Colson Center press release) rather than the "2,500+" in your brief, since it's more recent and from an official source. Worth a quick check that it's still current.
+- **Reading list on the public Programme page:** I only named the foundational titles (Mere Christianity, Knowing God, How Now Shall We Live?, Restoring All Things, Man's Search for Meaning). I deliberately left out the titles your own Annex B.3 flags as needing careful, deliberate weighting (Strange New World, Another Gospel?, The Desecration of Man) and especially *America Agonistes*, which your brief notes is a close analysis of US domestic politics by name — not portable to a Singapore recruitment page. That's an editorial choice about a *recruitment* page, not a claim that Singapore Fellows don't read more widely than this list.
+- **Left out entirely:** the Ipsos data on Singapore attitudes toward same-sex marriage and parenting (your Annex D.4). It's real, well-sourced data, and I don't doubt its place in the internal diagnosis — but it's a live, sensitive, and easily misread topic for a public page whose only job is getting people to sign up. I judged it does more harm than good here. Your call if you disagree.
+- **The youth-specific "decline started 5 years early" finding** is presented on the Why Now page explicitly as an unpublished internal working hypothesis, not a proven fact — per your own brief's caveat in Section 2.1.
 
 ## File structure
 
 ```
 index.html      Home
-program.html    The Programme — CFRR framework, curriculum, SG format
-why.html        What's at Stake — the case, stated plainly
-stories.html    All 11 Singapore Fellow testimonials, first-name attribution
-faq.html        Format, cost + value case, eligibility, deadlines
-apply.html      CTA — links to the official colsonfellows.org/apply/
+program.html    The Programme — what it is, CFRR framework, curriculum, SG format
+why.html        Why Now — the data, hedged appropriately; the worldview gap
+stories.html    All 11 Singapore Fellow testimonials from your brief's Annex A
+faq.html        Format, cost, eligibility, deadlines
+apply.html      CTA — links out to the official colsonfellows.org/apply/
 css/style.css   Shared design system
-js/config.js    ← Edit THIS for dates/pricing. Nothing else.
-js/main.js      Mobile nav + reads config.js. No tracking, no analytics.
+js/main.js      Mobile nav toggle only — no tracking, no analytics
 images/         Your logo (webp + png), plus generated favicons
 .nojekyll       Tells GitHub Pages not to run Jekyll over the files
 ```
 
+Edit any page's text directly in the `.html` files — it's plain markup, no templating, so search for the sentence you want to change and edit it in place. Nav, footer, and the "applications close" banner are repeated at the top/bottom of every page; if a date or deadline changes, update it in all six files (a find-and-replace across `.html` files for the old date will catch every instance).
+
 ## Design notes
 
-- No stock photography — typography and colour only, drawn from your crest (navy, shield-gold, an oxblood accent).
+- No stock photography. Given the choice between generic stock photos and a typography-and-colour-led design, I went with the latter — it's more consistent with how the strongest programmes in this space (Colson Center's own site included) actually present themselves, and it means nothing on the site is a placeholder image standing in for the real thing. If you have real photos from an actual Singapore huddle or dinner fellowship, those would be a strong addition to the Programme or Stories page — happy to help drop them in.
+- Palette and type are drawn directly from your crest (navy, shield-gold, a deep oxblood accent) rather than a generic template look.
 - Fully responsive, keyboard-navigable, and respects reduced-motion settings.
-- Every text/background colour pairing has been checked against WCAG AA (4.5:1 for body text, 3:1 for large text/UI). If something still looks hard to read on your screen, it's likely a design-taste question rather than a contrast-math one at this point — tell me which element and I'll take another pass.
