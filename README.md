@@ -1,4 +1,4 @@
-# Colson Fellows Singapore — Outreach Site
+# Colson Fellows Singapore — Outreach Site 
 
 Plain HTML/CSS/JS, six pages, no build step. Drag it into a GitHub repo and Pages serves it as-is.
 
