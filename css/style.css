@@ -1,20 +1,14 @@
 /* =========================================================
-   Colson Fellows Singapore — Design System (v2)
+   Colson Fellows Singapore — Design System
    Palette drawn from the Colson Fellows crest: deep navy,
    shield gold, and an aged-parchment ground, with oxblood
    as the single warm accent. Display type is a literary
-   serif (Frank Ruhl Libre); body type is a plain, highly
-   legible humanist sans.
-
-   v2 changes: darker ink-faint and heavier/larger label type
-   for legibility; gold-light (not gold) for all small text on
-   dark backgrounds; format-box is always light regardless of
-   surrounding section, so it can never collide with a dark
-   background; Apply is now outside the collapsible mobile nav
-   so it's always on screen.
+   serif (Frank Ruhl Libre) to echo the programme's own
+   emphasis on reading and formation through old books;
+   body type is a plain, highly-legible humanist sans.
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600;700;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600;700;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root{
   /* Colour */
@@ -29,9 +23,9 @@
   --oxblood-dark:#4E1D25;
   --ink:         #201D1A;
   --ink-soft:    #4B463D;
-  --ink-faint:   #655F53;
-  --line:        rgba(32,29,26,0.14);
-  --line-on-navy:rgba(228,219,190,0.24);
+  --ink-faint:   #7A7568;
+  --line:        rgba(32,29,26,0.12);
+  --line-on-navy:rgba(228,219,190,0.22);
 
   /* Type */
   --serif: 'Frank Ruhl Libre', Georgia, 'Times New Roman', serif;
@@ -65,7 +59,6 @@ body{
   background: var(--cream);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  padding-top: 0;
 }
 
 h1,h2,h3,h4{
@@ -106,20 +99,20 @@ section{ padding: var(--section-pad) 0; }
 
 .eyebrow{
   font-family: var(--mono);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--oxblood);
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
   margin-bottom: 1em;
+  font-weight: 500;
 }
-.on-navy .eyebrow{ color: var(--gold-light); }
+.on-navy .eyebrow{ color: var(--gold); }
 .eyebrow::before{
   content:"";
-  width: 22px; height: 2px;
+  width: 22px; height: 1px;
   background: currentColor;
   display:inline-block;
 }
@@ -128,12 +121,11 @@ section{ padding: var(--section-pad) 0; }
    so a reader can tell "sourced fact" from "narrative copy" at a glance */
 .tag{
   font-family: var(--mono);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
   color: var(--ink-faint);
   border: 1px solid var(--line);
-  padding: 0.2em 0.6em;
+  padding: 0.15em 0.55em;
   border-radius: 2px;
   white-space: nowrap;
 }
@@ -144,17 +136,17 @@ section{ padding: var(--section-pad) 0; }
   background: var(--oxblood);
   color: var(--cream);
   font-family: var(--mono);
-  font-weight: 500;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   text-align: center;
-  padding: 0.6em 1em;
+  padding: 0.55em 1em;
   letter-spacing: 0.01em;
 }
-.utility-bar a{ color: var(--cream); text-decoration: underline; text-decoration-color: var(--gold-light); text-underline-offset: 3px; font-weight: 700; }
+.utility-bar a{ color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
 
 header.site{
   position: sticky; top: 0; z-index: 40;
-  background: var(--navy-dark);
+  background: rgba(22,35,61,0.97);
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line-on-navy);
 }
 .site-nav{
@@ -164,37 +156,32 @@ header.site{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 .brand{ display:flex; align-items:center; gap:0.65rem; text-decoration:none; flex-shrink:0; }
 .brand img{ height: 34px; width:auto; }
 .brand-region{
   font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--gold-light);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
   text-transform: uppercase;
   border-left: 1px solid var(--line-on-navy);
   padding-left: 0.65rem;
   margin-left: 0.1rem;
 }
-nav.primary{ display:flex; align-items:center; gap: clamp(1rem, 2vw, 2rem); flex: 1; margin-left: clamp(1rem,3vw,2.5rem); }
+nav.primary{ display:flex; align-items:center; gap: clamp(1rem, 2vw, 2rem); }
 nav.primary a{
   color: var(--gold-light);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.94rem;
+  font-weight: 500;
   padding: 0.4em 0.1em;
   border-bottom: 1px solid transparent;
   transition: border-color .15s ease, color .15s ease;
-  white-space: nowrap;
 }
 nav.primary a:hover{ color: var(--cream); border-color: var(--gold); }
 nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gold); }
-
-.nav-actions{ display:flex; align-items:center; gap: 0.6rem; flex-shrink:0; }
-
 .btn-apply-nav{
   background: var(--gold);
   color: var(--navy-dark) !important;
@@ -202,7 +189,6 @@ nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gol
   border-radius: 2px;
   font-weight: 700 !important;
   border-bottom: none !important;
-  display:inline-block;
 }
 .btn-apply-nav:hover{ background: var(--gold-light); border-color: transparent !important; }
 
@@ -210,23 +196,21 @@ nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gol
   display:none;
   background:none; border:1px solid var(--line-on-navy); color:var(--cream);
   padding: 0.5em 0.7em; border-radius:2px; cursor:pointer;
-  font-weight:600; font-size:0.9rem;
 }
 
-@media (max-width: 860px){
+@media (max-width: 820px){
   nav.primary{
-    position: fixed; inset: 116px 0 0 0; height: calc(100vh - 116px);
+    position: fixed; inset: 60px 0 0 0; height: calc(100vh - 60px);
     background: var(--navy-dark);
     flex-direction: column; align-items: flex-start; justify-content: flex-start;
-    padding: 1.5rem clamp(1.25rem, 6vw, 2.5rem);
+    padding: 2rem clamp(1.25rem, 6vw, 2.5rem);
     transform: translateX(100%);
     transition: transform .25s ease;
     overflow-y:auto;
-    margin-left: 0;
-    z-index: 39;
   }
   nav.primary.open{ transform: translateX(0); }
-  nav.primary a{ font-size: 1.2rem; width:100%; padding: 0.75em 0; border-bottom: 1px solid var(--line-on-navy); }
+  nav.primary a{ font-size: 1.25rem; width:100%; padding: 0.7em 0; border-bottom: 1px solid var(--line-on-navy); }
+  .btn-apply-nav{ margin-top: 1rem; text-align:center; }
   .nav-toggle{ display:block; }
   .brand-region{ display:none; }
 }
@@ -248,10 +232,10 @@ nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gol
 .btn:hover{ transform: translateY(-1px); }
 .btn-gold{ background: var(--gold); color: var(--navy-dark); }
 .btn-gold:hover{ background: var(--gold-light); }
-.btn-outline-navy{ border-color: var(--navy); color: var(--navy); background: var(--cream); }
+.btn-outline-navy{ border-color: var(--navy); color: var(--navy); background:transparent; }
 .btn-outline-navy:hover{ background: var(--navy); color: var(--cream); }
 .btn-outline-cream{ border-color: var(--line-on-navy); color: var(--cream); background:transparent; }
-.btn-outline-cream:hover{ border-color: var(--gold); color: var(--gold-light); }
+.btn-outline-cream:hover{ border-color: var(--gold); color: var(--gold); }
 .btn-block{ width:100%; justify-content:center; }
 .btn-lg{ padding: 1em 2.1em; font-size: 1.08rem; }
 
@@ -321,22 +305,14 @@ nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gol
 }
 .testimonial .who{
   font-family: var(--mono);
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--oxblood);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   margin-top: 1rem;
   border-top: 1px solid var(--line);
   padding-top: 0.8rem;
 }
-/* Dark variant, for testimonial cards placed on navy sections */
-.testimonial.on-dark{
-  background: var(--navy-mid);
-  border-color: var(--line-on-navy);
-}
-.testimonial.on-dark p.quote{ color: var(--cream); }
-.testimonial.on-dark .who{ color: var(--gold-light); border-color: var(--line-on-navy); }
 
 /* ---------- Timeline / format ---------- */
 .timeline{
@@ -354,38 +330,39 @@ nav.primary a[aria-current="page"]{ color: var(--cream); border-color: var(--gol
 .timeline .step:last-child{ border-right:none; }
 .timeline .num{
   font-family: var(--mono);
-  color: var(--gold-light);
-  font-weight: 600;
-  font-size: 0.8rem;
+  color: var(--gold);
+  font-size: 0.78rem;
   display:block;
   margin-bottom: 0.5rem;
 }
 .timeline .step h4{ font-family: var(--serif); color: var(--cream); font-size:1.05rem; margin:0 0 0.35rem; }
 .timeline .step p{ color: var(--gold-light); font-size: 0.88rem; margin:0; }
 
-/* format-box is ALWAYS light, regardless of what section it sits in —
-   deliberately, so it can never end up low-contrast against a dark
-   background no matter where it's dropped on the page. */
 .format-box{
-  background: var(--parchment) !important;
-  border: 1px solid var(--line) !important;
-  border-left: 4px solid var(--oxblood) !important;
+  background: var(--parchment);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
   padding: 1.8rem 2rem;
   border-radius: var(--radius);
-  color: var(--ink-soft);
 }
-.format-box .eyebrow{ color: var(--oxblood) !important; }
-.format-box p{ color: var(--ink-soft) !important; }
-.format-box strong{ color: var(--ink) !important; }
-.format-box .tag{ margin-right: 0.4rem; margin-bottom: 0.4rem; display:inline-block; color: var(--ink-faint) !important; border-color: var(--line) !important; }
+.format-box .tag{ margin-right: 0.4rem; margin-bottom: 0.4rem; display:inline-block; }
 
 /* ---------- Stat ---------- */
 .stat-row{ display:flex; flex-wrap:wrap; gap: var(--gap); }
 .stat{ flex: 1 1 200px; }
 .stat .num{ font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--navy); font-weight:700; line-height:1; }
-.on-navy .stat .num{ color: var(--gold-light); }
+.on-navy .stat .num{ color: var(--gold); }
 .stat .label{ font-size: 0.92rem; color: var(--ink-faint); margin-top: 0.4rem; }
-.on-navy .stat .label{ color: var(--gold-light); opacity:0.85; }
+.on-navy .stat .label{ color: var(--gold-light); opacity:0.8; }
+
+/* ---------- Divider / signature crest motif ---------- */
+.divider{
+  display:flex; align-items:center; gap: 1rem;
+  margin: 0 auto var(--gap);
+  max-width: 220px;
+  color: var(--gold);
+}
+.divider .line{ flex:1; height:1px; background: currentColor; opacity:0.5; }
 
 /* ---------- FAQ ---------- */
 details.faq-item{
@@ -407,7 +384,6 @@ details.faq-item summary::-webkit-details-marker{ display:none; }
 details.faq-item summary::after{
   content:"+";
   font-family: var(--mono);
-  font-weight: 600;
   font-size:1.3rem;
   color: var(--oxblood);
   flex-shrink:0;
@@ -415,7 +391,6 @@ details.faq-item summary::after{
 }
 details.faq-item[open] summary::after{ content:"–"; }
 details.faq-item .a{ padding-top: 0.9rem; max-width: 62ch; }
-details.faq-item .a a{ color: var(--oxblood); text-decoration: underline; font-weight:600; }
 
 /* ---------- Footer ---------- */
 footer.site{
@@ -428,12 +403,12 @@ footer.site .foot-grid{
   padding-bottom: 2.5rem; border-bottom: 1px solid var(--line-on-navy);
 }
 @media (max-width: 700px){ footer.site .foot-grid{ grid-template-columns: 1fr; } }
-footer.site h4{ color: var(--cream); font-family: var(--sans); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight:700; margin-bottom: 1rem; }
-footer.site a{ color: var(--gold-light); text-decoration:none; font-weight:500; }
-footer.site a:hover{ color: var(--gold-light); text-decoration: underline; }
+footer.site h4{ color: var(--cream); font-family: var(--sans); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight:600; margin-bottom: 1rem; }
+footer.site a{ color: var(--gold-light); text-decoration:none; }
+footer.site a:hover{ color: var(--gold); text-decoration: underline; }
 footer.site ul{ list-style:none; display:flex; flex-direction:column; gap: 0.6rem; font-size:0.95rem; }
 footer.site .brand img{ height: 30px; margin-bottom:1rem; }
-footer.site .fine{ font-size:0.84rem; color: var(--gold-light); opacity:0.75; padding-top: 1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem 1.5rem; justify-content:space-between; }
+footer.site .fine{ font-size:0.82rem; color: var(--ink-faint); opacity:0.7; padding-top: 1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem 1.5rem; justify-content:space-between; }
 
 /* ---------- misc ---------- */
 .list-check{ list-style:none; display:flex; flex-direction:column; gap:0.85rem; }
@@ -445,9 +420,9 @@ footer.site .fine{ font-size:0.84rem; color: var(--gold-light); opacity:0.75; pa
   font-weight:700;
 }
 .pill{
-  display:inline-block; font-family: var(--mono); font-size:0.74rem; font-weight:600; letter-spacing:0.05em;
+  display:inline-block; font-family: var(--mono); font-size:0.72rem; letter-spacing:0.05em;
   text-transform:uppercase; background: var(--gold-light); color: var(--navy-dark);
-  padding: 0.28em 0.75em; border-radius: 20px; margin-bottom: 0.6rem;
+  padding: 0.25em 0.7em; border-radius: 20px; margin-bottom: 0.6rem;
 }
 .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items:start; }
 @media (max-width: 780px){ .two-col{ grid-template-columns: 1fr; } }
@@ -456,8 +431,3 @@ footer.site .fine{ font-size:0.84rem; color: var(--gold-light); opacity:0.75; pa
 .book-list{ list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
 .book-list li{ padding: 0.6rem 0; border-bottom:1px solid var(--line); font-size:0.98rem; }
 .book-list .author{ color: var(--ink-faint); font-size:0.88rem; }
-
-/* deadline-aware content: after-deadline messaging is hidden by
-   default so there's no flash of both versions; js/main.js reveals
-   the correct one once it checks js/config.js against today's date */
-[data-after-deadline]{ display:none; }
